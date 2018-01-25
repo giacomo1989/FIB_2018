@@ -43,8 +43,8 @@ def webhook():
 def processRequest(req):
 				
 
-	if req.get("result").get("action") == "yahooWeatherForecast":
-		result 		= req.get("result")
+	if req.get("queryResult").get("action") == "yahooWeatherForecast":
+		result 		= req.get("queryResult")
 		parameters 	= result.get("parameters")
 		city 		= parameters.get("geo-city") 
 		
