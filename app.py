@@ -71,7 +71,7 @@ def processRequest(req):
 		celsius=int(condition.get('temp'))
 		Gc=int((celsius-32)/1.8)
        		
-		speech1 =day+", "+date+"\n\nToday in " + location.get('city') + ": " + condition.get('text') + ".\nThe temperature is " + str(Gc)+ " C with a humidity of "+umidita+"%"
+		speech1 = city
 		res = makeWebhookResult(speech1)
 		return res
 		
