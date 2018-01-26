@@ -2,22 +2,18 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-from future import standard_library
-standard_library.install_aliases()
-import urllib.request, urllib.parse, urllib.error
-from urllib.request import urlopen
+from future.standard_library import install_aliases
+install_aliases()
+
+from urllib.parse import urlparse, urlencode
+from urllib.request import urlopen, Request
+from urllib.error import HTTPError
+
 import json
 import os
 
-
-
 from flask import Flask
 from flask import request
-
-#from fbmq import Page
-#import requests
-#from django.views.decorators.csrf import csrf_exempt
-
 from flask import make_response
 
 # Flask app should start in global layout
@@ -43,8 +39,8 @@ def webhook():
 def processRequest(req):
 				
 
-	if req.get("queryResult").get("action") == "yahooWeatherForecast":
-		result 		= req.get("queryResult")
+	if req.get("result").get("action") == "yahooWeatherForecast":
+		result 		= req.get("result")
 		parameters 	= result.get("parameters")
 		city 		= parameters.get("geo-city") 
 		
